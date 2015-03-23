@@ -131,10 +131,10 @@ public class MainActivity extends FragmentActivity {
 
         //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 20);
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(currentPosition)      // Sets the center of the map to Mountain View
+                .target(currentPosition)    // Sets the center of the map to the user's current position
                 .zoom(20)                   // Sets the zoom
-                .bearing(0)                // Sets the orientation of the camera to east
-                .tilt(80)                   // Sets the tilt of the camera to 30 degrees
+                .bearing(0)
+                .tilt(80)                   // Sets the tilt of the camera to 80 degrees
                 .build();                   // Creates a CameraPosition from the builder
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 4000, null);
 
