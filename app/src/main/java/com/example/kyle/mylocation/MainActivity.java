@@ -127,7 +127,7 @@ public class MainActivity extends FragmentActivity {
                 .snippet("Lat:" + location.getLatitude() + "Lng" + location.getLongitude())
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                 .title("ME"));
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 8);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 17);
         googleMap.animateCamera(cameraUpdate);
 
     }
