@@ -20,6 +20,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -127,8 +128,15 @@ public class MainActivity extends FragmentActivity {
                 .snippet("Lat:" + location.getLatitude() + "Lng" + location.getLongitude())
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                 .title("ME"));
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 17);
-        googleMap.animateCamera(cameraUpdate);
+
+        //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 20);
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(currentPosition)      // Sets the center of the map to Mountain View
+                .zoom(20)                   // Sets the zoom
+                .bearing(0)                // Sets the orientation of the camera to east
+                .tilt(80)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 4000, null);
 
     }
 
