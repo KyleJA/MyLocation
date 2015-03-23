@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -77,6 +78,7 @@ public class MainActivity extends FragmentActivity {
                 public void onLocationChanged(Location location){
                     // Redraw the marker when get location update
                     drawMarker(location);
+
                 }
 
                 @Override
@@ -125,7 +127,8 @@ public class MainActivity extends FragmentActivity {
                 .snippet("Lat:" + location.getLatitude() + "Lng" + location.getLongitude())
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                 .title("ME"));
-
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 8);
+        googleMap.animateCamera(cameraUpdate);
 
     }
 
