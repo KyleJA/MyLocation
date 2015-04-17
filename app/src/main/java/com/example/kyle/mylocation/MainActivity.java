@@ -8,22 +8,16 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends FragmentActivity {
@@ -104,7 +98,7 @@ public class MainActivity extends FragmentActivity {
                 // Place the initial marker
                 drawMarker(location);
             }
-            locationManager.requestLocationUpdates(provider, 0, 0, locationListener);
+            locationManager.requestLocationUpdates(provider, 5000, 200, locationListener);
 
         }
 
@@ -129,6 +123,10 @@ public class MainActivity extends FragmentActivity {
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                 .title("ME"));
 
+        /*
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 20);
+        googleMap.animateCamera(cameraUpdate);
+        */
         //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentPosition, 20);
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(currentPosition)    // Sets the center of the map to the user's current position
